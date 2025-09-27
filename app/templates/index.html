@@ -3,19 +3,454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Accommodation</title>
+    <meta name="description" content="Student accommodation with Japanese design">
+    <title>宿 - Accommo</title>
+    <!-- Noto Sans Japanese / CJK font import -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <header>
-        <h1>Student Accommodation</h1>
+
+<body style="padding-top:3.5rem;">
+        <div class="floating-elements"></div>
+        <style>
+            html {
+                font-size: 16px;
+                box-sizing: border-box;
+            }
+            *, *:before, *:after {
+                box-sizing: inherit;
+            }
+            body, html {
+                font-family: 'Noto Sans JP', 'Noto Sans CJK JP', 'Noto Sans CJK', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+                line-height: 1.6;
+                background: #f8f6f2;
+            }
+            h1, h2, h3, h4, h5, h6, .japanese-subtitle {
+                font-family: 'Noto Sans JP', 'Noto Sans CJK JP', 'Noto Sans CJK', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+            }
+        </style>
+
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <span class="su-symbol" id="su-Symbol">宿</span>
+                    <span>Accommo</span>
+                </a>
+                <nav id="nav">
+                    <ul class="nav-list" style="display:flex; gap:2.5rem; list-style:none; margin:0; padding:0; align-items:center;">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#service" class="nav-link">Service</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                        <li><a href="#faq" class="nav-link">FAQ</a></li>
+                        <li><a href="#blog" class="nav-link">Blog</a></li>
+                    </ul>
+                    <button class="nav-toggle" id="navToggle">☰</button>
+                </nav>
+            </div>
+        </div>
     </header>
+
     <main>
-        <p>Modern, accessible, and easy to integrate.</p>
-        <p><a href="/api/status">API Status</a></p>
+    <section id="home" class="hero" style="padding:2.5vw 0 2vw 0; margin:0;">
+        <div class="hero-flex" style="display:flex; flex-direction:row; align-items:center; justify-content:center; gap:6vw; max-width:106rem; margin:0 auto; min-height:72vh; flex-wrap:nowrap;">
+            <div class="hero-content" style="flex:1 1 32rem; min-width:20rem; max-width:56rem; z-index:2; background:transparent; padding:4vw 2vw 2vw 2vw; text-align:left; margin:0 0 0 2vw;">
+                <h1 style="font-size:3.5rem; font-weight:300; margin-bottom:2.5rem; display:flex; align-items:center; gap:1.5rem;">
+                    <span style="font-size:3.5rem; font-family:'Noto Sans JP','Noto Sans CJK JP','Noto Sans CJK','Noto Sans',sans-serif;">宿</span>
+                    <span style="font-size:2rem; color:#bbb;">|</span>
+                    <span>Space to Breathe</span>
+                </h1>
+                <p class="hero-description" style="font-size:1.25rem; color:#666;">
+                    In the art of living, what we don't include is as important as what we do.<br>
+                    Discover accommodation that embraces the power of emptiness.
+                </p>
+            </div>
+            <div class="hero-slider" style="flex:1 1 32rem; min-width:20rem; max-width:56rem; position:relative; aspect-ratio: 9/10; display:flex; align-items:center; justify-content:center;">
+                <img class="slider-img" src="{{ url_for('static', filename='img/AQNlLObu_XnqlKAr3YtYzeC2X73rlAncdp0z5hTbmYeRA1zPY0y30AhEbmj2DnCriJkEkuzhhTv5vvuDUbPSWQqMPPnoOEeJNdi8bwPeqaMgWS3NceMS10NDE6YifgDl.png') }}" alt="Serene student room" style="object-fit:cover; max-width:100%; max-height:100%; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); opacity:1; transition:opacity 0.7s; z-index:1; background:#fff; margin:0; padding:0;">
+                <img class="slider-img" src="{{ url_for('static', filename='img/AQOPpasDJ4Fy5rgNUDLl7QqmZcp6vcJjpGJtG4AO9E_ltGrQYh5Atme7BZ3E-yj3y-bmuCv4M093lX1JmrLo3mnuXghp5qitcPPZ7Ftv2N57SGkQ9noBRbwhKjZzObw.png') }}" alt="Accessible Harmony" style="object-fit:cover; max-width:100%; max-height:100%; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); opacity:0; transition:opacity 0.7s; z-index:1; background:#fff; margin:0; padding:0;">
+                <img class="slider-img" src="{{ url_for('static', filename='img/AQMJ9K4xV6X2sacH9geAA2_ZeAGCCDAyf_QHktf2UliWjfM0CqtpBEtV1TmQM6P0E9nTpRlMeF4roztdSUD6kWLW9bbgKLiRDUxk9HP0pzNRuu8a9qbiFcASoPqERNk3.png') }}" alt="Seamless Integration" style="object-fit:cover; max-width:100%; max-height:100%; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); opacity:0; transition:opacity 0.7s; z-index:1; background:#fff; margin:0; padding:0;">
+                <div class="slider-dots" style="position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); display:flex; gap:1.2rem; z-index:3;">
+                    <span class="slider-dot" style="width:1.25rem; height:1.25rem; border-radius:50%; background:#fff; border:0.16rem solid #c9a96e; display:inline-block; cursor:pointer; opacity:0.7;"></span>
+                    <span class="slider-dot" style="width:1.25rem; height:1.25rem; border-radius:50%; background:#fff; border:0.16rem solid #c9a96e; display:inline-block; cursor:pointer; opacity:0.7;"></span>
+                    <span class="slider-dot" style="width:1.25rem; height:1.25rem; border-radius:50%; background:#fff; border:0.16rem solid #c9a96e; display:inline-block; cursor:pointer; opacity:0.7;"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="features" style="margin-top:0; padding-top:0;">
+    <section id="service" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Service</h2>
+                <p style="font-size:1.2rem; color:#444; max-width:700px; margin-bottom:2.5rem;">We offer thoughtfully designed student accommodation inspired by Japanese minimalism. Our services include fully furnished rooms, community spaces, high-speed internet, and 24/7 support to ensure a peaceful and productive living environment.</p>
+                <ul style="font-size:1.1rem; color:#555; line-height:2;">
+                    <li>Private and shared rooms with natural light</li>
+                    <li>Flexible lease terms</li>
+                    <li>On-site laundry and study lounges</li>
+                    <li>Secure access and CCTV</li>
+                    <li>Weekly cleaning and maintenance</li>
+                </ul>
+            </div>
+        </section>
+            <div class="container">
+                <h2 class="section-title">Essential Elements</h2>
+                <div style="position:relative;">
+                  <button id="features-left" aria-label="Scroll left" style="position:absolute; left:-2.5rem; top:50%; transform:translateY(-50%); z-index:2; background:#fff; border:none; border-radius:50%; box-shadow:0 2px 8px rgba(0,0,0,0.08); width:40px; height:40px; font-size:1.5rem; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8592;</button>
+                  <div class="cards-scroll" id="features-scroll" style="display:flex; gap:2.5rem; overflow-x:auto; scroll-behavior:smooth; padding-bottom:1rem; margin:0 2.5rem; flex-wrap:nowrap;">
+                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                        <img src="{{ url_for('static', filename='img/AQNTrxjiZXZKqNrn52d5FEY6C2T_Tqrh9dS9yBUlOxHVcbdaW71GbnPDuykwiEWl86PB6rHKpMTEPZJssQQSRxQkhDz37xrk-bKp92wkl52T0-n3egjcVDDCwyKBVH5h.png') }}" alt="Minimal Living" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                        <h3>Minimal Living</h3>
+                        <p style="text-align:center;">Spaces designed around what you truly need, eliminating the unnecessary to reveal the essential.</p>
+                    </div>
+                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                        <img src="{{ url_for('static', filename='img/AQOPpasDJ4Fy5rgNUDLl7QqmZcp6vcJjpGJtG4AO9E_ltGrQYh5Atme7BZ3E-yj3y-bmuCv4M093lX1JmrLo3mnuXghp5qitcPPZ7Ftv2N57SGkQ9noBRbwhKjZzObw.png') }}" alt="Accessible Harmony" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                        <h3>Accessible Harmony</h3>
+                        <p style="text-align:center;">Universal design principles that create inclusive environments through thoughtful simplicity.</p>
+                    </div>
+                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                        <img src="{{ url_for('static', filename='img/AQOTKlMfdGUggQd7Frk9ID7sFFBDDVipkdC0VqQIHRCfMugq5ncyUOmFzBq2x0Kl37z3hbaKiFLAsg-yYMUjm1mXSlV1Jc5xrSEKhBAnSMDy3fBIDbdq-bOm_yE7rnvp.png') }}" alt="Seamless Integration" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                        <h3>Seamless Integration</h3>
+                        <p style="text-align:center;">Technology that disappears into the background, allowing life to take center stage.</p>
+                    </div>
+                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                        <img src="{{ url_for('static', filename='img/AQMA86hwRxNgJ6napCOEcvevnJDu17jRZKCj3ifCRuqfp2K1J_Qtdf2GhAPhPpcz9XInSIbNvIAO3vinGaIgYSiiDYDP2wWSKD8cwH48UGtUWzYNI6-yNJohOcKVLxwP.png') }}" alt="Nature Connection" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                        <h3>Nature Connection</h3>
+                        <p style="text-align:center;">Biophilic design brings the outdoors in, fostering calm and well-being through natural materials and greenery.</p>
+                    </div>
+                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                        <img src="{{ url_for('static', filename='img/AQPllE2FLXpPIbJ5BvPu6cboot7UjX5zPL0igZw7i1ld6Q7x9ozAScsQZcYiv2XMUIIdsNuNITZVnh5ujO1dXwx3mOhea8RUCpBbCaRL5Q73nfzmqIaLmkcTxBoP5xjS.png') }}" alt="Quiet Corners" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                        <h3>Quiet Corners</h3>
+                        <p style="text-align:center;">Dedicated nooks for study, reflection, or meditation, designed for focus and tranquility.</p>
+                    </div>
+                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                        <img src="{{ url_for('static', filename='img/AQN5uVN9JebreOA4pfc6OoJKYwOygP0w1nyVonItMg_kVV0c5Lrtq6DWFMQoBtawD_dqhe3nZrgQcUfVIuhVuCR1r8k0O7njowI3-RnsINtjQA40bpzrUnP9KCWJIIdA.jpeg') }}" alt="Community Spaces" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                        <h3>Community Spaces</h3>
+                        <p style="text-align:center;">Open, flexible areas for socializing, events, and shared experiences, fostering a sense of belonging.</p>
+                    </div>
+                  </div>
+                  <button id="features-right" aria-label="Scroll right" style="position:absolute; right:-2.5rem; top:50%; transform:translateY(-50%); z-index:2; background:#fff; border:none; border-radius:50%; box-shadow:0 2px 8px rgba(0,0,0,0.08); width:40px; height:40px; font-size:1.5rem; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8594;</button>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <!-- Move Contact Us and FAQ to main level -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p style="font-size:1.2rem; color:#444; max-width:700px;">Have questions or want to book a tour? Reach out to our friendly team:</p>
+            <div style="display:flex; flex-wrap:wrap; gap:2rem; margin:2rem 0 1.5rem 0;">
+                <div style="flex:1 1 180px; min-width:180px; display:flex; align-items:center; gap:1rem; background:#faf7f2; border-radius:1rem; padding:1.2rem 1.5rem; box-shadow:0 2px 8px rgba(201,169,110,0.07);">
+                    <span style="font-size:1.5rem; color:#c9a96e;">&#9993;</span>
+                    <div>
+                        <div style="font-weight:600; color:#222;">Email</div>
+                        <a href="mailto:info@accommo.com" style="color:#555; text-decoration:none;">info@accommo.com</a>
+                    </div>
+                </div>
+                <div style="flex:1 1 180px; min-width:180px; display:flex; align-items:center; gap:1rem; background:#faf7f2; border-radius:1rem; padding:1.2rem 1.5rem; box-shadow:0 2px 8px rgba(201,169,110,0.07);">
+                    <span style="font-size:1.5rem; color:#c9a96e;">&#9742;</span>
+                    <div>
+                        <div style="font-weight:600; color:#222;">Phone</div>
+                        <a href="tel:+1234567890" style="color:#555; text-decoration:none;">+1 234 567 890</a>
+                    </div>
+                </div>
+                <div style="flex:2 1 260px; min-width:220px; display:flex; align-items:center; gap:1rem; background:#faf7f2; border-radius:1rem; padding:1.2rem 1.5rem; box-shadow:0 2px 8px rgba(201,169,110,0.07);">
+                    <span style="font-size:1.5rem; color:#c9a96e;">&#127968;</span>
+                    <div>
+                        <div style="font-weight:600; color:#222;">Address</div>
+                        <span style="color:#555;">123 Street, Tranquil City</span>
+                    </div>
+                </div>
+            </div>
+            <form style="margin-top:2rem; max-width:400px;">
+                <input type="text" placeholder="Your Name" style="width:100%; padding:0.7rem; margin-bottom:1rem; border-radius:0.5rem; border:1px solid #ccc;">
+                <input type="email" placeholder="Your Email" style="width:100%; padding:0.7rem; margin-bottom:1rem; border-radius:0.5rem; border:1px solid #ccc;">
+                <textarea placeholder="Your Message" style="width:100%; padding:0.7rem; margin-bottom:1rem; border-radius:0.5rem; border:1px solid #ccc;"></textarea>
+                <button type="submit" style="padding:0.7rem 2rem; border:none; border-radius:0.5rem; background:#c9a96e; color:#fff; font-size:1rem; cursor:pointer;">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="faq" class="section">
+        <div class="container">
+            <h2 class="section-title">FAQ</h2>
+            <div style="max-width:700px;">
+                <div class="faq-item" style="margin-bottom:1.2rem;">
+                    <button class="faq-question" style="width:100%; text-align:left; background:#faf7f2; border:none; border-radius:0.7rem; padding:1rem 1.5rem; font-size:1.1rem; font-weight:600; color:#c9a96e; cursor:pointer; box-shadow:0 2px 8px rgba(201,169,110,0.07); display:flex; align-items:center; justify-content:space-between;">What is included in the rent?<span style='font-size:1.3rem; color:#bbb;'>&#9660;</span></button>
+                    <div class="faq-answer" style="display:none; padding:1rem 1.5rem 0 1.5rem; color:#555;">All utilities, high-speed internet, furniture, and weekly cleaning are included.</div>
+                </div>
+                <div class="faq-item" style="margin-bottom:1.2rem;">
+                    <button class="faq-question" style="width:100%; text-align:left; background:#faf7f2; border:none; border-radius:0.7rem; padding:1rem 1.5rem; font-size:1.1rem; font-weight:600; color:#c9a96e; cursor:pointer; box-shadow:0 2px 8px rgba(201,169,110,0.07); display:flex; align-items:center; justify-content:space-between;">Can I book a room for a short stay?<span style='font-size:1.3rem; color:#bbb;'>&#9660;</span></button>
+                    <div class="faq-answer" style="display:none; padding:1rem 1.5rem 0 1.5rem; color:#555;">Yes, we offer flexible lease terms to suit your needs.</div>
+                </div>
+                <div class="faq-item" style="margin-bottom:1.2rem;">
+                    <button class="faq-question" style="width:100%; text-align:left; background:#faf7f2; border:none; border-radius:0.7rem; padding:1rem 1.5rem; font-size:1.1rem; font-weight:600; color:#c9a96e; cursor:pointer; box-shadow:0 2px 8px rgba(201,169,110,0.07); display:flex; align-items:center; justify-content:space-between;">Is there support available?<span style='font-size:1.3rem; color:#bbb;'>&#9660;</span></button>
+                    <div class="faq-answer" style="display:none; padding:1rem 1.5rem 0 1.5rem; color:#555;">Our team is available 24/7 for any assistance you need.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <section id="blog" class="section">
+            <div class="container">
+                <h2 class="section-title">Blog</h2>
+                <div style="max-width:700px;">
+                    <article style="margin-bottom:2rem;">
+                        <h4>Embracing 宿: The Beauty of Space</h4>
+                        <p>Discover how Japanese design principles can transform your living experience, creating calm and focus through intentional space.</p>
+                    </article>
+                    <article style="margin-bottom:2rem;">
+                        <h4>Student Life: Finding Balance</h4>
+                        <p>Tips for balancing study, rest, and social life in a thoughtfully designed environment.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer>
-        &copy; 2025 Accommo
+        <div class="container">
+            <p>&copy; 2025 Accommo - 静寂の美学 (The Aesthetics of Silence)</p>
+        </div>
     </footer>
+
+    <script>
+        // Simple slider for hero images (fix for DOMContentLoaded)
+        function initHeroSlider() {
+            const sliderImgs = document.querySelectorAll('.slider-img');
+            const sliderDots = document.querySelectorAll('.slider-dot');
+            let sliderIdx = 0;
+            function showSlide(idx) {
+                sliderImgs.forEach((img, i) => {
+                    img.style.opacity = (i === idx) ? '1' : '0';
+                });
+                sliderDots.forEach((dot, i) => {
+                    dot.style.opacity = (i === idx) ? '1' : '0.7';
+                    dot.style.background = (i === idx) ? '#c9a96e' : '#fff';
+                });
+            }
+            sliderDots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    sliderIdx = i;
+                    showSlide(sliderIdx);
+                });
+            });
+            setInterval(() => {
+                sliderIdx = (sliderIdx + 1) % sliderImgs.length;
+                showSlide(sliderIdx);
+            }, 4000);
+            showSlide(sliderIdx);
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHeroSlider);
+        } else {
+            initHeroSlider();
+        }
+                // FAQ dropdown toggle
+                document.querySelectorAll('.faq-question').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const answer = this.nextElementSibling;
+                        const expanded = answer.style.display === 'block';
+                        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+                        document.querySelectorAll('.faq-question span').forEach(s => s.innerHTML = '&#9660;');
+                        if (!expanded) {
+                            answer.style.display = 'block';
+                            this.querySelector('span').innerHTML = '&#9650;';
+                        }
+                    });
+                });
+                // Section nav highlight on scroll
+                const sectionNavLinks = document.querySelectorAll('.section-nav-link');
+                const sectionIds = ['home','service','features','contact','faq','blog'];
+                const sectionElements = sectionIds.map(id => document.getElementById(id));
+                function highlightSectionNav() {
+                    let activeIdx = 0;
+                    for (let i = 0; i < sectionElements.length; i++) {
+                        const sec = sectionElements[i];
+                        if (sec && sec.getBoundingClientRect().top - 120 < window.innerHeight/3) {
+                            activeIdx = i;
+                        }
+                    }
+                    sectionNavLinks.forEach((link, i) => {
+                        if (i === activeIdx) {
+                            link.style.background = '#f3e9d6';
+                            link.style.color = '#c9a96e';
+                        } else {
+                            link.style.background = 'none';
+                            link.style.color = '#888';
+                        }
+                    });
+                }
+                window.addEventListener('scroll', highlightSectionNav);
+                window.addEventListener('DOMContentLoaded', highlightSectionNav);
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        // Floating elements animation
+        const floatingContainer = document.querySelector('.floating-elements');
+        
+        function createFloatingDot() {
+            const dot = document.createElement('div');
+            dot.className = 'floating-dot';
+            dot.style.left = Math.random() * 100 + '%';
+            dot.style.animationDelay = Math.random() * 20 + 's';
+            dot.style.animationDuration = (15 + Math.random() * 10) + 's';
+            floatingContainer.appendChild(dot);
+            
+            // Remove dot after animation
+            setTimeout(() => {
+                if (dot.parentNode) {
+                    dot.parentNode.removeChild(dot);
+                }
+            }, 25000);
+        }
+
+        // Create floating dots periodically
+        setInterval(createFloatingDot, 3000);
+        
+        // Create initial dots
+        for (let i = 0; i < 3; i++) {
+            setTimeout(createFloatingDot, i * 1000);
+        }
+
+        // Interactive Ma symbol
+        const maSymbol = document.getElementById('maSymbol');
+        maSymbol.addEventListener('click', () => {
+            maSymbol.style.transform = 'scale(0)';
+            setTimeout(() => {
+                maSymbol.style.transform = 'scale(1)';
+            }, 200);
+        });
+
+        // Smooth scrolling for API link
+        const apiLink = document.getElementById('apiLink');
+        apiLink.addEventListener('mouseenter', () => {
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            ripple.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background: rgba(201, 169, 110, 0.1);
+                transform: translate(-50%, -50%);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+                z-index: -1;
+            `;
+            
+            apiLink.style.position = 'relative';
+            apiLink.appendChild(ripple);
+            
+            setTimeout(() => {
+                if (ripple.parentNode) {
+                    ripple.parentNode.removeChild(ripple);
+                }
+            }, 600);
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    width: 300px;
+                    height: 300px;
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax effect for hero content
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                const rate = scrolled * -0.3;
+                heroContent.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Keyboard navigation enhancement
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-nav');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-nav');
+        });
+
+        // Add focus styles for keyboard navigation
+        const focusStyle = document.createElement('style');
+        focusStyle.textContent = `
+            .keyboard-nav *:focus {
+                outline: 2px solid var(--accent-color);
+                outline-offset: 2px;
+            }
+        `;
+        document.head.appendChild(focusStyle);
+
+            // Simple slider for hero images
+            const sliderImgs = document.querySelectorAll('.slider-img');
+            const sliderDots = document.querySelectorAll('.slider-dot');
+            let sliderIdx = 0;
+            function showSlide(idx) {
+                sliderImgs.forEach((img, i) => {
+                    img.style.opacity = (i === idx) ? '1' : '0';
+                });
+                sliderDots.forEach((dot, i) => {
+                    dot.style.opacity = (i === idx) ? '1' : '0.7';
+                    dot.style.background = (i === idx) ? '#c9a96e' : '#fff';
+                });
+            }
+            sliderDots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    sliderIdx = i;
+                    showSlide(sliderIdx);
+                });
+            });
+            setInterval(() => {
+                sliderIdx = (sliderIdx + 1) % sliderImgs.length;
+                showSlide(sliderIdx);
+            }, 4000);
+            showSlide(sliderIdx);
+    </script>
 </body>
 </html>
