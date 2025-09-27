@@ -8,28 +8,50 @@
     <!-- Noto Sans Japanese / CJK font import -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <style>
+        /* NAVIGATION FIX: Make navigation visible */
+        nav {
+            opacity: 1 !important; /* Override the hidden navigation */
+            transition: opacity 0.5s ease;
+        }
+
+        /* Mobile navigation fixes */
+        @media (max-width: 768px) {
+            .nav-list {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(254, 254, 254, 0.98);
+                backdrop-filter: blur(30px);
+                border-top: 1px solid #f0f0f0;
+                flex-direction: column;
+                padding: 2rem 0;
+                gap: 1rem;
+                opacity: 0;
+                transform: translateY(-10px);
+                pointer-events: none;
+                transition: all 0.3s ease;
+            }
+
+            .nav-list.active {
+                opacity: 1 !important;
+                transform: translateY(0);
+                pointer-events: all;
+            }
+
+            .nav-toggle {
+                display: block !important;
+            }
+        }
+    </style>
 </head>
 
 <body style="padding-top:3.5rem;">
-        <div class="floating-elements"></div>
-        <style>
-            html {
-                font-size: 16px;
-                box-sizing: border-box;
-            }
-            *, *:before, *:after {
-                box-sizing: inherit;
-            }
-            body, html {
-                font-family: 'Noto Sans JP', 'Noto Sans CJK JP', 'Noto Sans CJK', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
-                line-height: 1.6;
-                background: #f8f6f2;
-            }
-            h1, h2, h3, h4, h5, h6, .japanese-subtitle {
-                font-family: 'Noto Sans JP', 'Noto Sans CJK JP', 'Noto Sans CJK', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
-            }
-        </style>
 
+    <div class="floating-elements"></div>
+    
+    <!-- FIXED: Single header element with working navigation -->
     <header id="header">
         <div class="container">
             <div class="header-content">
@@ -38,12 +60,13 @@
                     <span>Accommo</span>
                 </a>
                 <nav id="nav">
-                    <ul class="nav-list" style="display:flex; gap:2.5rem; list-style:none; margin:0; padding:0; align-items:center;">
-                        <li><a href="#home" class="nav-link">Home</a></li>
-                        <li><a href="#service" class="nav-link">Service</a></li>
-                        <li><a href="#contact" class="nav-link">Contact</a></li>
-                        <li><a href="#faq" class="nav-link">FAQ</a></li>
-                        <li><a href="#blog" class="nav-link">Blog</a></li>
+                    <ul class="nav-list" id="navList" style="display:flex; gap:2.5rem; list-style:none; margin:0; padding:0; align-items:center;">
+                        <a href="#home" class="section-nav-link" style="text-decoration:none;color:#888;font-size:1.08rem;padding:0.3rem 1.2rem;border-radius:1.2rem;transition:all 0.2s;">Home</a>
+                        <a href="#service" class="section-nav-link" style="text-decoration:none;color:#888;font-size:1.08rem;padding:0.3rem 1.2rem;border-radius:1.2rem;transition:all 0.2s;">Service</a>
+                        <a href="#features" class="section-nav-link" style="text-decoration:none;color:#888;font-size:1.08rem;padding:0.3rem 1.2rem;border-radius:1.2rem;transition:all 0.2s;">Essential Elements</a>
+                        <a href="#contact" class="section-nav-link" style="text-decoration:none;color:#888;font-size:1.08rem;padding:0.3rem 1.2rem;border-radius:1.2rem;transition:all 0.2s;">Contact</a>
+                        <a href="#faq" class="section-nav-link" style="text-decoration:none;color:#888;font-size:1.08rem;padding:0.3rem 1.2rem;border-radius:1.2rem;transition:all 0.2s;">FAQ</a>
+                        <a href="#blog" class="section-nav-link" style="text-decoration:none;color:#888;font-size:1.08rem;padding:0.3rem 1.2rem;border-radius:1.2rem;transition:all 0.2s;">Blog</a>
                     </ul>
                     <button class="nav-toggle" id="navToggle">☰</button>
                 </nav>
@@ -58,7 +81,7 @@
                 <h1 style="font-size:3.5rem; font-weight:300; margin-bottom:2.5rem; display:flex; align-items:center; gap:1.5rem;">
                     <span style="font-size:3.5rem; font-family:'Noto Sans JP','Noto Sans CJK JP','Noto Sans CJK','Noto Sans',sans-serif;">宿</span>
                     <span style="font-size:2rem; color:#bbb;">|</span>
-                    <span>Space to Breathe</span>
+                    <span style="font-family:Helvetica,Arial,sans-serif;">Space to Breathe</span>
                 </h1>
                 <p class="hero-description" style="font-size:1.25rem; color:#666;">
                     In the art of living, what we don't include is as important as what we do.<br>
@@ -78,115 +101,128 @@
         </div>
     </section>
 
-    <section class="section" id="features" style="margin-top:0; padding-top:0;">
     <section id="service" class="section">
-            <div class="container">
-                <h2 class="section-title">Our Service</h2>
-                <p style="font-size:1.2rem; color:#444; max-width:700px; margin-bottom:2.5rem;">We offer thoughtfully designed student accommodation inspired by Japanese minimalism. Our services include fully furnished rooms, community spaces, high-speed internet, and 24/7 support to ensure a peaceful and productive living environment.</p>
-                <ul style="font-size:1.1rem; color:#555; line-height:2;">
-                    <li>Private and shared rooms with natural light</li>
-                    <li>Flexible lease terms</li>
-                    <li>On-site laundry and study lounges</li>
-                    <li>Secure access and CCTV</li>
-                    <li>Weekly cleaning and maintenance</li>
-                </ul>
-            </div>
-        </section>
-            <div class="container">
-                <h2 class="section-title">Essential Elements</h2>
-                <div style="position:relative;">
-                  <button id="features-left" aria-label="Scroll left" style="position:absolute; left:-2.5rem; top:50%; transform:translateY(-50%); z-index:2; background:#fff; border:none; border-radius:50%; box-shadow:0 2px 8px rgba(0,0,0,0.08); width:40px; height:40px; font-size:1.5rem; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8592;</button>
-                  <div class="cards-scroll" id="features-scroll" style="display:flex; gap:2.5rem; overflow-x:auto; scroll-behavior:smooth; padding-bottom:1rem; margin:0 2.5rem; flex-wrap:nowrap;">
-                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
-                        <img src="{{ url_for('static', filename='img/AQNTrxjiZXZKqNrn52d5FEY6C2T_Tqrh9dS9yBUlOxHVcbdaW71GbnPDuykwiEWl86PB6rHKpMTEPZJssQQSRxQkhDz37xrk-bKp92wkl52T0-n3egjcVDDCwyKBVH5h.png') }}" alt="Minimal Living" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
-                        <h3>Minimal Living</h3>
-                        <p style="text-align:center;">Spaces designed around what you truly need, eliminating the unnecessary to reveal the essential.</p>
-                    </div>
-                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
-                        <img src="{{ url_for('static', filename='img/AQOPpasDJ4Fy5rgNUDLl7QqmZcp6vcJjpGJtG4AO9E_ltGrQYh5Atme7BZ3E-yj3y-bmuCv4M093lX1JmrLo3mnuXghp5qitcPPZ7Ftv2N57SGkQ9noBRbwhKjZzObw.png') }}" alt="Accessible Harmony" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
-                        <h3>Accessible Harmony</h3>
-                        <p style="text-align:center;">Universal design principles that create inclusive environments through thoughtful simplicity.</p>
-                    </div>
-                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
-                        <img src="{{ url_for('static', filename='img/AQOTKlMfdGUggQd7Frk9ID7sFFBDDVipkdC0VqQIHRCfMugq5ncyUOmFzBq2x0Kl37z3hbaKiFLAsg-yYMUjm1mXSlV1Jc5xrSEKhBAnSMDy3fBIDbdq-bOm_yE7rnvp.png') }}" alt="Seamless Integration" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
-                        <h3>Seamless Integration</h3>
-                        <p style="text-align:center;">Technology that disappears into the background, allowing life to take center stage.</p>
-                    </div>
-                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
-                        <img src="{{ url_for('static', filename='img/AQMA86hwRxNgJ6napCOEcvevnJDu17jRZKCj3ifCRuqfp2K1J_Qtdf2GhAPhPpcz9XInSIbNvIAO3vinGaIgYSiiDYDP2wWSKD8cwH48UGtUWzYNI6-yNJohOcKVLxwP.png') }}" alt="Nature Connection" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
-                        <h3>Nature Connection</h3>
-                        <p style="text-align:center;">Biophilic design brings the outdoors in, fostering calm and well-being through natural materials and greenery.</p>
-                    </div>
-                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
-                        <img src="{{ url_for('static', filename='img/AQPllE2FLXpPIbJ5BvPu6cboot7UjX5zPL0igZw7i1ld6Q7x9ozAScsQZcYiv2XMUIIdsNuNITZVnh5ujO1dXwx3mOhea8RUCpBbCaRL5Q73nfzmqIaLmkcTxBoP5xjS.png') }}" alt="Quiet Corners" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
-                        <h3>Quiet Corners</h3>
-                        <p style="text-align:center;">Dedicated nooks for study, reflection, or meditation, designed for focus and tranquility.</p>
-                    </div>
-                    <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
-                        <img src="{{ url_for('static', filename='img/AQN5uVN9JebreOA4pfc6OoJKYwOygP0w1nyVonItMg_kVV0c5Lrtq6DWFMQoBtawD_dqhe3nZrgQcUfVIuhVuCR1r8k0O7njowI3-RnsINtjQA40bpzrUnP9KCWJIIdA.jpeg') }}" alt="Community Spaces" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
-                        <h3>Community Spaces</h3>
-                        <p style="text-align:center;">Open, flexible areas for socializing, events, and shared experiences, fostering a sense of belonging.</p>
-                    </div>
-                  </div>
-                  <button id="features-right" aria-label="Scroll right" style="position:absolute; right:-2.5rem; top:50%; transform:translateY(-50%); z-index:2; background:#fff; border:none; border-radius:50%; box-shadow:0 2px 8px rgba(0,0,0,0.08); width:40px; height:40px; font-size:1.5rem; cursor:pointer; display:flex; align-items:center; justify-content:center;">&#8594;</button>
+        <div class="container" style="position:relative;">
+            <div style="display:flex; flex-wrap:wrap; gap:0; align-items:stretch; min-height:340px;">
+                <div style="flex:1 1 340px; min-width:260px; max-width:520px; background:url('{{ url_for('static', filename='img/AQNTrxjiZXZKqNrn52d5FEY6C2T_Tqrh9dS9yBUlOxHVcbdaW71GbnPDuykwiEWl86PB6rHKpMTEPZJssQQSRxQkhDz37xrk-bKp92wkl52T0-n3egjcVDDCwyKBVH5h.png') }}') center center/cover no-repeat; border-radius:1.2rem 0 0 1.2rem; min-height:340px;">
+                    <!-- Decorative background image only -->
+                </div>
+                <div style="flex:2 1 480px; min-width:320px; max-width:900px; background:rgba(255,255,255,0.92); border-radius:0 1.2rem 1.2rem 0; padding:3rem 2.5rem; display:flex; flex-direction:column; justify-content:center;">
+                    <h2 class="section-title">Our Service</h2>
+                    <p style="font-size:1.2rem; color:#444; margin-bottom:2.5rem;">We offer thoughtfully designed student accommodation inspired by Japanese minimalism. Our services include fully furnished rooms, community spaces, high-speed internet, and 24/7 support to ensure a peaceful and productive living environment.</p>
+                    <ul style="font-size:1.1rem; color:#555; line-height:2; margin-top:0;">
+                        <li>Private and shared rooms with natural light</li>
+                        <li>Flexible lease terms</li>
+                        <li>On-site laundry and study lounges</li>
+                        <li>Secure access and CCTV</li>
+                        <li>Weekly cleaning and maintenance</li>
+                    </ul>
                 </div>
             </div>
-        </section>
-
+        </div>
+    </section>
+            
+    <section class="section" id="features" style="margin-top:0; padding-top:0;">
+        <div class="container">
+            <h2 class="section-title">Essential Elements</h2>
+            <div style="position:relative;">
+                <div class="scroll-fade-right"></div>
+                <div class="cards-scroll" id="features-scroll" style="display:flex; gap:2.5rem; overflow-x:auto; scroll-behavior:smooth; padding-bottom:2.5rem; margin:0 2.5rem; flex-wrap:nowrap; cursor:grab; user-select:none;">
+                <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                    <img src="{{ url_for('static', filename='img/AQNTrxjiZXZKqNrn52d5FEY6C2T_Tqrh9dS9yBUlOxHVcbdaW71GbnPDuykwiEWl86PB6rHKpMTEPZJssQQSRxQkhDz37xrk-bKp92wkl52T0-n3egjcVDDCwyKBVH5h.png') }}" alt="Minimal Living" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                    <h3>Minimal Living</h3>
+                    <p style="text-align:center;">Spaces designed around what you truly need, eliminating the unnecessary to reveal the essential.</p>
+                </div>
+                <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                    <img src="{{ url_for('static', filename='img/AQOPpasDJ4Fy5rgNUDLl7QqmZcp6vcJjpGJtG4AO9E_ltGrQYh5Atme7BZ3E-yj3y-bmuCv4M093lX1JmrLo3mnuXghp5qitcPPZ7Ftv2N57SGkQ9noBRbwhKjZzObw.png') }}" alt="Accessible Harmony" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                    <h3>Accessible Harmony</h3>
+                    <p style="text-align:center;">Universal design principles that create inclusive environments through thoughtful simplicity.</p>
+                </div>
+                <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                    <img src="{{ url_for('static', filename='img/AQOTKlMfdGUggQd7Frk9ID7sFFBDDVipkdC0VqQIHRCfMugq5ncyUOmFzBq2x0Kl37z3hbaKiFLAsg-yYMUjm1mXSlV1Jc5xrSEKhBAnSMDy3fBIDbdq-bOm_yE7rnvp.png') }}" alt="Seamless Integration" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                    <h3>Seamless Integration</h3>
+                    <p style="text-align:center;">Technology that disappears into the background, allowing life to take center stage.</p>
+                </div>
+                <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                    <img src="{{ url_for('static', filename='img/AQMA86hwRxNgJ6napCOEcvevnJDu17jRZKCj3ifCRuqfp2K1J_Qtdf2GhAPhPpcz9XInSIbNvIAO3vinGaIgYSiiDYDP2wWSKD8cwH48UGtUWzYNI6-yNJohOcKVLxwP.png') }}" alt="Nature Connection" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                    <h3>Nature Connection</h3>
+                    <p style="text-align:center;">Biophilic design brings the outdoors in, fostering calm and well-being through natural materials and greenery.</p>
+                </div>
+                <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                    <img src="{{ url_for('static', filename='img/AQPllE2FLXpPIbJ5BvPu6cboot7UjX5zPL0igZw7i1ld6Q7x9ozAScsQZcYiv2XMUIIdsNuNITZVnh5ujO1dXwx3mOhea8RUCpBbCaRL5Q73nfzmqIaLmkcTxBoP5xjS.png') }}" alt="Quiet Corners" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                    <h3>Quiet Corners</h3>
+                    <p style="text-align:center;">Dedicated nooks for study, reflection, or meditation, designed for focus and tranquility.</p>
+                </div>
+                <div class="feature-card" style="flex:0 0 340px; background:#fff; border-radius:1rem; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:2rem; display:flex; flex-direction:column; align-items:center;">
+                    <img src="{{ url_for('static', filename='img/AQN5uVN9JebreOA4pfc6OoJKYwOygP0w1nyVonItMg_kVV0c5Lrtq6DWFMQoBtawD_dqhe3nZrgQcUfVIuhVuCR1r8k0O7njowI3-RnsINtjQA40bpzrUnP9KCWJIIdA.jpeg') }}" alt="Community Spaces" style="width:220px; max-width:100%; border-radius:1rem; margin-bottom:1.2rem;">
+                    <h3>Community Spaces</h3>
+                    <p style="text-align:center;">Open, flexible areas for socializing, events, and shared experiences, fostering a sense of belonging.</p>
+                </div>
+            </div>
+            </div>
+        </div>
     </section>
 
     <!-- Move Contact Us and FAQ to main level -->
     <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <p style="font-size:1.2rem; color:#444; max-width:700px;">Have questions or want to book a tour? Reach out to our friendly team:</p>
-            <div style="display:flex; flex-wrap:wrap; gap:2rem; margin:2rem 0 1.5rem 0;">
-                <div style="flex:1 1 180px; min-width:180px; display:flex; align-items:center; gap:1rem; background:#faf7f2; border-radius:1rem; padding:1.2rem 1.5rem; box-shadow:0 2px 8px rgba(201,169,110,0.07);">
-                    <span style="font-size:1.5rem; color:#c9a96e;">&#9993;</span>
-                    <div>
-                        <div style="font-weight:600; color:#222;">Email</div>
-                        <a href="mailto:info@accommo.com" style="color:#555; text-decoration:none;">info@accommo.com</a>
+    <div class="container">
+        <div style="display:flex; flex-wrap:wrap; gap:2.5rem; align-items:stretch; justify-content:center;">
+            <!-- Contact Info Card -->
+            <div style="flex:1 1 340px; min-width:260px; max-width:420px; background:linear-gradient(135deg,#faf7f2 80%,#f3e9d6 100%); border-radius:1.2rem; box-shadow:0 4px 24px rgba(201,169,110,0.08); padding:2.5rem 2rem; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;">
+                <h2 class="section-title" style="margin-bottom:1.2rem;">Contact Us</h2>
+                <p style="font-size:1.1rem; color:#666; margin-bottom:2rem;">Have questions or want to book a tour? Reach out to our friendly team:</p>
+                <div style="display:flex; flex-direction:column; gap:1.2rem; width:100%;">
+                    <div style="display:flex; align-items:center; gap:1rem;">
+                        <span style="font-size:1.7rem; color:#c9a96e; background:#fff7e6; border-radius:50%; padding:0.5rem; box-shadow:0 2px 8px rgba(201,169,110,0.07);">&#9993;</span>
+                        <div>
+                            <div style="font-weight:600; color:#222;">Email</div>
+                            <a href="mailto:info@accommo.com" style="color:#555; text-decoration:none;">info@accommo.com</a>
+                        </div>
                     </div>
-                </div>
-                <div style="flex:1 1 180px; min-width:180px; display:flex; align-items:center; gap:1rem; background:#faf7f2; border-radius:1rem; padding:1.2rem 1.5rem; box-shadow:0 2px 8px rgba(201,169,110,0.07);">
-                    <span style="font-size:1.5rem; color:#c9a96e;">&#9742;</span>
-                    <div>
-                        <div style="font-weight:600; color:#222;">Phone</div>
-                        <a href="tel:+1234567890" style="color:#555; text-decoration:none;">+1 234 567 890</a>
+                    <div style="display:flex; align-items:center; gap:1rem;">
+                        <span style="font-size:1.7rem; color:#c9a96e; background:#fff7e6; border-radius:50%; padding:0.5rem; box-shadow:0 2px 8px rgba(201,169,110,0.07);">&#9742;</span>
+                        <div>
+                            <div style="font-weight:600; color:#222;">Phone</div>
+                            <a href="tel:+1234567890" style="color:#555; text-decoration:none;">+1 234 567 890</a>
+                        </div>
                     </div>
-                </div>
-                <div style="flex:2 1 260px; min-width:220px; display:flex; align-items:center; gap:1rem; background:#faf7f2; border-radius:1rem; padding:1.2rem 1.5rem; box-shadow:0 2px 8px rgba(201,169,110,0.07);">
-                    <span style="font-size:1.5rem; color:#c9a96e;">&#127968;</span>
-                    <div>
-                        <div style="font-weight:600; color:#222;">Address</div>
-                        <span style="color:#555;">123 Street, Tranquil City</span>
+                    <div style="display:flex; align-items:center; gap:1rem;">
+                        <span style="font-size:1.7rem; color:#c9a96e; background:#fff7e6; border-radius:50%; padding:0.5rem; box-shadow:0 2px 8px rgba(201,169,110,0.07);">&#127968;</span>
+                        <div>
+                            <div style="font-weight:600; color:#222;">Address</div>
+                            <span style="color:#555;">123 Street, Tranquil City</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <form style="margin-top:2rem; max-width:400px;">
-                <input type="text" placeholder="Your Name" style="width:100%; padding:0.7rem; margin-bottom:1rem; border-radius:0.5rem; border:1px solid #ccc;">
-                <input type="email" placeholder="Your Email" style="width:100%; padding:0.7rem; margin-bottom:1rem; border-radius:0.5rem; border:1px solid #ccc;">
-                <textarea placeholder="Your Message" style="width:100%; padding:0.7rem; margin-bottom:1rem; border-radius:0.5rem; border:1px solid #ccc;"></textarea>
-                <button type="submit" style="padding:0.7rem 2rem; border:none; border-radius:0.5rem; background:#c9a96e; color:#fff; font-size:1rem; cursor:pointer;">Send</button>
-            </form>
+            <!-- Contact Form Card -->
+            <div style="flex:1 1 340px; min-width:260px; max-width:420px; background:#fff; border-radius:1.2rem; box-shadow:0 4px 24px rgba(201,169,110,0.08); padding:2.5rem 2rem; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;">
+                <form style="width:100%; max-width:340px; margin:auto; display:flex; flex-direction:column; gap:1.2rem;">
+                    <input type="text" placeholder="Your Name" style="width:100%; padding:0.9rem; border-radius:0.6rem; border:1.5px solid #e2d6c2; font-size:1rem;">
+                    <input type="email" placeholder="Your Email" style="width:100%; padding:0.9rem; border-radius:0.6rem; border:1.5px solid #e2d6c2; font-size:1rem;">
+                    <textarea placeholder="Your Message" style="width:100%; padding:0.9rem; border-radius:0.6rem; border:1.5px solid #e2d6c2; font-size:1rem; min-height:120px;"></textarea>
+                    <button type="submit" style="padding:0.9rem 2rem; border:none; border-radius:0.6rem; background:#c9a96e; color:#fff; font-size:1.1rem; font-weight:600; cursor:pointer; box-shadow:0 2px 8px rgba(201,169,110,0.07); transition:background 0.2s;">Send</button>
+                </form>
+            </div>
         </div>
+    </div>
     </section>
 
     <section id="faq" class="section">
-        <div class="container">
-            <h2 class="section-title">FAQ</h2>
-            <div style="max-width:700px;">
-                <div class="faq-item" style="margin-bottom:1.2rem;">
-                    <button class="faq-question" style="width:100%; text-align:left; background:#faf7f2; border:none; border-radius:0.7rem; padding:1rem 1.5rem; font-size:1.1rem; font-weight:600; color:#c9a96e; cursor:pointer; box-shadow:0 2px 8px rgba(201,169,110,0.07); display:flex; align-items:center; justify-content:space-between;">What is included in the rent?<span style='font-size:1.3rem; color:#bbb;'>&#9660;</span></button>
-                    <div class="faq-answer" style="display:none; padding:1rem 1.5rem 0 1.5rem; color:#555;">All utilities, high-speed internet, furniture, and weekly cleaning are included.</div>
+        <div class="container" style="max-width:none; width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; padding:0 0 0 0;">
+            <h2 class="section-title" style="max-width:1200px; margin-left:auto; margin-right:auto;">FAQ</h2>
+            <div style="max-width:1200px; margin-left:auto; margin-right:auto;">
+                <div class="faq-item" style="margin-bottom:1.2rem; width:100%;">
+                    <button class="faq-question" style="width:100%; text-align:left; background:#faf7f2; border:none; border-radius:0.7rem; padding:1.2rem 2.5rem; font-size:1.15rem; font-weight:600; color:#c9a96e; cursor:pointer; box-shadow:0 2px 8px rgba(201,169,110,0.07); display:flex; align-items:center; justify-content:space-between;">What is included in the rent?<span style='font-size:1.3rem; color:#bbb;'>&#9660;</span></button>
+                    <div class="faq-answer" style="display:none; padding:1.2rem 2.5rem 0 2.5rem; color:#555;">All utilities, high-speed internet, furniture, and weekly cleaning are included.</div>
                 </div>
-                <div class="faq-item" style="margin-bottom:1.2rem;">
-                    <button class="faq-question" style="width:100%; text-align:left; background:#faf7f2; border:none; border-radius:0.7rem; padding:1rem 1.5rem; font-size:1.1rem; font-weight:600; color:#c9a96e; cursor:pointer; box-shadow:0 2px 8px rgba(201,169,110,0.07); display:flex; align-items:center; justify-content:space-between;">Can I book a room for a short stay?<span style='font-size:1.3rem; color:#bbb;'>&#9660;</span></button>
-                    <div class="faq-answer" style="display:none; padding:1rem 1.5rem 0 1.5rem; color:#555;">Yes, we offer flexible lease terms to suit your needs.</div>
+                <div class="faq-item" style="margin-bottom:1.2rem; width:100%;">
+                    <button class="faq-question" style="width:100%; text-align:left; background:#faf7f2; border:none; border-radius:0.7rem; padding:1.2rem 2.5rem; font-size:1.15rem; font-weight:600; color:#c9a96e; cursor:pointer; box-shadow:0 2px 8px rgba(201,169,110,0.07); display:flex; align-items:center; justify-content:space-between;">Can I book a room for a short stay?<span style='font-size:1.3rem; color:#bbb;'>&#9660;</span></button>
+                    <div class="faq-answer" style="display:none; padding:1.2rem 2.5rem 0 2.5rem; color:#555;">Yes, we offer flexible lease terms to suit your needs.</div>
                 </div>
-                <div class="faq-item" style="margin-bottom:1.2rem;">
-                    <button class="faq-question" style="width:100%; text-align:left; background:#faf7f2; border:none; border-radius:0.7rem; padding:1rem 1.5rem; font-size:1.1rem; font-weight:600; color:#c9a96e; cursor:pointer; box-shadow:0 2px 8px rgba(201,169,110,0.07); display:flex; align-items:center; justify-content:space-between;">Is there support available?<span style='font-size:1.3rem; color:#bbb;'>&#9660;</span></button>
-                    <div class="faq-answer" style="display:none; padding:1rem 1.5rem 0 1.5rem; color:#555;">Our team is available 24/7 for any assistance you need.</div>
+                <div class="faq-item" style="margin-bottom:1.2rem; width:100%;">
+                    <button class="faq-question" style="width:100%; text-align:left; background:#faf7f2; border:none; border-radius:0.7rem; padding:1.2rem 2.5rem; font-size:1.15rem; font-weight:600; color:#c9a96e; cursor:pointer; box-shadow:0 2px 8px rgba(201,169,110,0.07); display:flex; align-items:center; justify-content:space-between;">Is there support available?<span style='font-size:1.3rem; color:#bbb;'>&#9660;</span></button>
+                    <div class="faq-answer" style="display:none; padding:1.2rem 2.5rem 0 2.5rem; color:#555;">Our team is available 24/7 for any assistance you need.</div>
                 </div>
             </div>
         </div>
@@ -215,6 +251,74 @@
     </footer>
 
     <script>
+        // Section navigation bar: highlight clicked link as active
+        document.addEventListener('DOMContentLoaded', function() {
+            const sectionNavLinks = document.querySelectorAll('.section-nav-link');
+            sectionNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    sectionNavLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+        // Grab-to-scroll for Essential Elements (desktop)
+        (function() {
+            const scroller = document.getElementById('features-scroll');
+            if (!scroller) return;
+            let isDown = false;
+            let startX, scrollLeft;
+            scroller.addEventListener('mousedown', (e) => {
+                isDown = true;
+                scroller.classList.add('grabbing');
+                startX = e.pageX - scroller.offsetLeft;
+                scrollLeft = scroller.scrollLeft;
+            });
+            scroller.addEventListener('mouseleave', () => {
+                isDown = false;
+                scroller.classList.remove('grabbing');
+            });
+            scroller.addEventListener('mouseup', () => {
+                isDown = false;
+                scroller.classList.remove('grabbing');
+            });
+            scroller.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - scroller.offsetLeft;
+                const walk = (x - startX) * 1.2; // scroll-fast
+                scroller.scrollLeft = scrollLeft - walk;
+            });
+        })();
+        // Show/hide scroll fade hint
+        (function() {
+            const scroller = document.getElementById('features-scroll');
+            const fade = document.querySelector('.scroll-fade-right');
+            if (!scroller || !fade) return;
+            function updateFade() {
+                if (scroller.scrollWidth - scroller.clientWidth - scroller.scrollLeft > 10) {
+                    fade.style.opacity = '1';
+                } else {
+                    fade.style.opacity = '0';
+                }
+            }
+            scroller.addEventListener('scroll', updateFade);
+            window.addEventListener('resize', updateFade);
+            setTimeout(updateFade, 300);
+        })();
+        // Minimalistic slider line for Essential Elements
+        const featuresScroll = document.getElementById('features-scroll');
+        const featuresSliderLine = document.getElementById('features-slider-line');
+        const featuresSliderProgress = document.getElementById('features-slider-progress');
+        if (featuresScroll && featuresSliderLine && featuresSliderProgress) {
+            function updateFeaturesSliderLine() {
+                const maxScroll = featuresScroll.scrollWidth - featuresScroll.clientWidth;
+                const percent = maxScroll > 0 ? (featuresScroll.scrollLeft / maxScroll) : 0;
+                featuresSliderProgress.style.width = (percent * 100 + 10) + '%'; // 10% min width for visibility
+            }
+            featuresScroll.addEventListener('scroll', updateFeaturesSliderLine);
+            window.addEventListener('resize', updateFeaturesSliderLine);
+            updateFeaturesSliderLine();
+        }
         // Simple slider for hero images (fix for DOMContentLoaded)
         function initHeroSlider() {
             const sliderImgs = document.querySelectorAll('.slider-img');
@@ -246,14 +350,15 @@
         } else {
             initHeroSlider();
         }
-                // FAQ dropdown toggle
+                // FAQ dropdown toggle (allow multiple open)
                 document.querySelectorAll('.faq-question').forEach(btn => {
                     btn.addEventListener('click', function() {
                         const answer = this.nextElementSibling;
                         const expanded = answer.style.display === 'block';
-                        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
-                        document.querySelectorAll('.faq-question span').forEach(s => s.innerHTML = '&#9660;');
-                        if (!expanded) {
+                        if (expanded) {
+                            answer.style.display = 'none';
+                            this.querySelector('span').innerHTML = '&#9660;';
+                        } else {
                             answer.style.display = 'block';
                             this.querySelector('span').innerHTML = '&#9650;';
                         }

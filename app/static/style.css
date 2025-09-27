@@ -1,3 +1,107 @@
+/* Section Navigation Bar Styles (from temp.html) */
+.section-nav {
+    position: sticky;
+    top: 100px;
+    z-index: 900;
+    background: rgba(254, 254, 254, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 0.7rem 0 0.5rem 0;
+}
+.section-nav-link {
+    text-decoration: none;
+    color: #888;
+    font-size: 1.08rem;
+    padding: 0.3rem 1.2rem;
+    border-radius: 1.2rem;
+    transition: all 0.2s;
+}
+.section-nav-link:hover,
+.section-nav-link.active {
+    background: #f3e9d6;
+    color: #c9a96e;
+}
+@media (max-width: 768px) {
+    .section-nav {
+        top: 80px;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem;
+    }
+}
+#features-scroll::-webkit-scrollbar {
+    height: 5px;
+    background: transparent;
+}
+#features-scroll::-webkit-scrollbar-thumb {
+    background: #c9a96e;
+    border-radius: 2.5px;
+}
+#features-scroll::-webkit-scrollbar-track {
+    background: #e5e1d8;
+    border-radius: 2.5px;
+}
+html {
+    font-size: 16px;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body, html {
+    font-family: 'Noto Sans JP', 'Noto Sans CJK JP', 'Noto Sans CJK', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    background: #f8f6f2;
+}
+h1, h2, h3, h4, h5, h6, .japanese-subtitle {
+    font-family: 'Noto Sans JP', 'Noto Sans CJK JP', 'Noto Sans CJK', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+/* Show a subtle fade on the right to hint scrollability */
+.scroll-fade-right {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 3rem;
+    pointer-events: none;
+    background: linear-gradient(to left, #f8f6f2 80%, transparent 100%);
+    z-index: 2;
+    display: none;
+}
+@media (min-width: 700px) {
+    .scroll-fade-right { display: block; }
+}
+/* Responsive card sizing for all screens */
+#features-scroll {
+    scroll-snap-type: x mandatory;
+}
+.feature-card {
+    scroll-snap-align: start;
+}
+@media (max-width: 900px) {
+    #features-scroll {
+        gap: 1.2rem !important;
+    }
+    .feature-card {
+        flex: 0 0 80vw !important;
+        max-width: 90vw;
+    }
+}
+@media (max-width: 600px) {
+    #features-scroll {
+        gap: 0.7rem !important;
+        padding-bottom: 1.2rem !important;
+    }
+    .feature-card {
+        flex: 0 0 92vw !important;
+        max-width: 98vw;
+        padding: 1.2rem !important;
+    }
+}
+/* --- End moved styles --- */
 :root {
     --primary-color: #1a1a1a;
     --accent-color: #c9a96e;
@@ -172,6 +276,9 @@ main {
     margin-bottom: 8rem;
     color: var(--text-primary);
     letter-spacing: -0.01em;
+    margin-top: 2.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 /* Image Gallery with placeholder integration */
